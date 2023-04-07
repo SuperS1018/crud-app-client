@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useLocation, useNavigate } from "react-router";
+import { CATEGORIES_LIST } from "../constants";
 
 const CreatePost: React.FC = () => {
     const navigate = useNavigate();
@@ -51,33 +52,6 @@ const CreatePost: React.FC = () => {
         }
     };
 
-    const categories = [
-        {
-            title: 'Art',
-            value: 'art'
-        },
-        {
-            title: 'Science',
-            value: 'science'
-        },
-        {
-            title: 'Technology',
-            value: 'technology'
-        },
-        {
-            title: 'Cinema',
-            value: 'cinema'
-        },
-        {
-            title: 'Design',
-            value: 'design'
-        },
-        {
-            title: 'Food',
-            value: 'food'
-        }
-    ]
-
     return (
         <div className="createPost">
             <div className="content">
@@ -107,7 +81,7 @@ const CreatePost: React.FC = () => {
                 </div>
                 <div className="item">
                     <h1>Category</h1>
-                    {categories.map(category => (
+                    {CATEGORIES_LIST.map(category => (
                         <label className="category" htmlFor={category.value} key={category.title}>
                             <input type="radio" checked={cate === category.value} name='category' value={category.value} id={category.value} onChange={e => setCate(e.target.value)} />
                             {category.title}

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import DOMPurify from "isomorphic-dompurify";
 
 export interface PostsProps {
@@ -13,6 +13,7 @@ export interface PostsProps {
 }
 
 const Posts: React.FC = () => {
+    const navigate = useNavigate();
     const location = useLocation();
     const params = location.search;
     const [ posts, setPosts ] = useState<PostsProps[] | []>([]);
@@ -42,7 +43,7 @@ const Posts: React.FC = () => {
                                 <h1>{post.title}</h1>
                             </Link>
                             <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.desc, { USE_PROFILES: { html: true }}) }} />
-                            <button>Read more</button>
+                            <button onClick={() => navigate(`/post/${post.id}`)}>Read more</button>
                         </div>
                     </div>
                 ))}

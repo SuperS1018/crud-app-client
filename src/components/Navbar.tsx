@@ -1,10 +1,11 @@
 import React, { Context, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext, AuthContextProps } from "../context/authContext";
-import Logo from '../images/sam-logo.svg'
+import Logo from '../images/sam-logo.svg';
+import { CATEGORIES_LIST } from "../constants";
 
 const Navbar: React.FC = () => {
-
+    const navigate = useNavigate();
     const { currentUser, logout } = useContext<AuthContextProps>(AuthContext as Context<AuthContextProps>);
 
     return (
@@ -16,24 +17,21 @@ const Navbar: React.FC = () => {
                     </Link>
                 </div>
                 <div className="links">
-                    <Link className="link" to='/?cate=art'><h6>ART</h6></Link>
-                    <Link className="link" to='/?cate=science'><h6>SCIENCE</h6></Link>
-                    <Link className="link" to='/?cate=technology'><h6>TECHNOLOGY</h6></Link>
-                    <Link className="link" to='/?cate=cinema'><h6>CINEMA</h6></Link>
-                    <Link className="link" to='/?cate=design'><h6>DESIGN</h6></Link>
-                    <Link className="link" to='/?cate=food'><h6>FOOD</h6></Link>
+                    {CATEGORIES_LIST.map(category => (
+                        <Link className="link" key={category.title} to={`/?cate=${category.value}`}><h6>{category.title.toUpperCase()}</h6></Link>
+                    ))}
+
+                    {currentUser && <span className="write">
+                        <button onClick={() => navigate('/createPost')}>Write a Blog</button>
+                    </span>}
+
+                    {currentUser ? <button className="logout-btn" onClick={logout}>Logout</button> : <button className="login-btn" onClick={() => navigate('/login')}>Login</button>}
 
                     {currentUser && <Link to='/myInfo'>
                         <div className="avatar">
                             <img src={`../uploads/${currentUser?.img}`} alt={currentUser?.username} />
                         </div>
                     </Link>}
-                    {currentUser ? <span onClick={logout}>Logout</span> : <Link className="link" to='/login'>Login</Link>}
-                    <span className="write">
-                        <Link className="link" to='/createPost'>
-                            <button>Write a Blog</button>
-                        </Link>
-                    </span>
                 </div>
 
                 

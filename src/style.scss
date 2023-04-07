@@ -131,6 +131,10 @@ $app-color: #f47c2c;
 
                     button {
                         @include primaryButton;
+
+                        &.logout-btn {
+                            @include secondaryButton;
+                        }
                     }
                 }
             }
