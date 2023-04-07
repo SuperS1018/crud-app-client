@@ -2,7 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from 'react';
 import axios from 'axios';
 import { inputsProps } from '../pages/Login';
 
-interface CurrentUserProps {
+export interface CurrentUserProps {
     username: string;
     email: string;
     id: number;
@@ -10,6 +10,7 @@ interface CurrentUserProps {
 };
 
 export interface AuthContextProps {
+    setCurrentUser: React.Dispatch<React.SetStateAction<CurrentUserProps | null>>;
     currentUser: CurrentUserProps | null,
     login: (inputs: inputsProps) => void;
     logout: () => void;
@@ -40,6 +41,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({childre
 
     return (
         <AuthContext.Provider value={{
+            setCurrentUser,
             currentUser,
             login,
             logout

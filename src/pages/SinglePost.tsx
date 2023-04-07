@@ -1,13 +1,14 @@
 import React, { Context, useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Menu from "../components/Menu";
-import Sam from '../images/sam_avatar.png';
-import Delete from '../images/delete.png';
-import Edit from '../images/edit.png';
+import Delete from '../images/del-icon.svg';
+import Edit from '../images/edit-icon.svg';
 import { PostsProps } from "./Posts";
 import axios from "axios";
 import moment from 'moment';
 import { AuthContext, AuthContextProps } from "../context/authContext";
+import DOMPurify from "isomorphic-dompurify";
+import DefaultAvatar from '../images/default.jpg';
 
 interface SinglePostProps extends PostsProps {
     username: string;
@@ -56,7 +57,7 @@ const SinglePost: React.FC = () => {
             <div className="content">
                 <img src={`/uploads/${post.img}`} alt="" />
                 <div className="user">
-                    {post.userImg && <img src={post.userImg} alt="" />}
+                    <img src={post.userImg ? `../uploads/${post.userImg}` : DefaultAvatar} alt="" />
                     <div className="info">
                         <span>{post.username}</span>
                         <p>Posted {moment(post.date).fromNow()}</p>
@@ -70,7 +71,7 @@ const SinglePost: React.FC = () => {
                 </div>
 
                 <h1>{post.title}</h1>
-                <p dangerouslySetInnerHTML={{ __html: post.desc }}></p>
+                <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.desc) }}></p>
             </div>
 
             <Menu category={post.cate} />

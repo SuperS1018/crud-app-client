@@ -23,10 +23,16 @@ const Navbar: React.FC = () => {
                     <Link className="link" to='/?cate=design'><h6>DESIGN</h6></Link>
                     <Link className="link" to='/?cate=food'><h6>FOOD</h6></Link>
 
-                    <span>{currentUser?.username}</span>
+                    {currentUser && <Link to='/myInfo'>
+                        <div className="avatar">
+                            <img src={`../uploads/${currentUser?.img}`} alt={currentUser?.username} />
+                        </div>
+                    </Link>}
                     {currentUser ? <span onClick={logout}>Logout</span> : <Link className="link" to='/login'>Login</Link>}
                     <span className="write">
-                        <Link className="link" to='/createPost'>Write</Link>
+                        <Link className="link" to='/createPost'>
+                            <button>Write a Blog</button>
+                        </Link>
                     </span>
                 </div>
 

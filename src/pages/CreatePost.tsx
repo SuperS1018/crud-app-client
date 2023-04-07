@@ -3,13 +3,13 @@ import moment from "moment";
 import React, { useState } from "react";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 const CreatePost: React.FC = () => {
+    const navigate = useNavigate();
     const { state } = useLocation();
     const [description, setDescription] = useState<string>(state?.desc || '');
     const [title, setTitle] = useState<string>(state?.title || '');
-    // const [category, setCategory] = useState<string>('');
     const [file, setFile] = useState<string | Blob>('');
     const [cate, setCate] = useState<string>(state?.cate || '');
 
@@ -30,9 +30,6 @@ const CreatePost: React.FC = () => {
         e.preventDefault();
         const imgUrl = await uploadFile();
 
-        console.log('imgUrl: ', imgUrl)
-        console.log('file: ', file)
-
         try {
             state ? 
             await axios.put(`/posts/${state.id}`, {
@@ -48,6 +45,7 @@ const CreatePost: React.FC = () => {
                 cate,
                 date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss')
             })
+            navigate('/');
         } catch (err) {
             console.log(err);
         }
