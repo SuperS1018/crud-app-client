@@ -35,13 +35,13 @@ const CreatePost: React.FC = () => {
             await axios.put(`/posts/${state.id}`, {
                 title,
                 desc: description,
-                img: file ? imgUrl : '',
+                img: file ? imgUrl : state.img,
                 cate
             }):
             await axios.post('/posts', {
                 title,
                 desc: description,
-                img: file ? imgUrl : '',
+                img: file ? imgUrl : state.img,
                 cate,
                 date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss')
             })
