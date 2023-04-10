@@ -1,8 +1,7 @@
 import {
     createBrowserRouter,
     RouterProvider,
-    Outlet,
-    Route
+    Outlet
 } from 'react-router-dom';
 import Posts from './pages/Posts';
 import Signup from './pages/Signup';

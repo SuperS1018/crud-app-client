@@ -12,7 +12,7 @@ const Menu: React.FC<{category: string | undefined}> = ({category}) => {
         const currentPageId = location.pathname.split(/\/post\//i)[1];
         const fetchData = async () => {
             try {
-                const res = await axios.get(`/posts?cate=${category}`) as {data: PostsProps[]};
+                const res = await axios.get(`/api/posts?cate=${category}`) as {data: PostsProps[]};
                 const filteredList = res.data.filter(item => item.id.toString() !== currentPageId);
                 setPosts(filteredList);
             } catch (err) {
@@ -20,7 +20,7 @@ const Menu: React.FC<{category: string | undefined}> = ({category}) => {
             };
         };
         fetchData();
-    }, [category]);
+    }, [category, location.pathname]);
 
     return (
         <div className="menu">

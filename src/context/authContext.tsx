@@ -31,11 +31,11 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({childre
     }, [currentUser])
 
     const login = async (inputs: inputsProps) => {
-        const res = await axios.post('/auth/login', inputs);
+        const res = await axios.post('/api/auth/login', inputs);
         setCurrentUser(res.data);
     };
     const logout = async () => {
-        await axios.post('/auth/logout');
+        await axios.post('/api/auth/logout');
         setCurrentUser(null);
     };
 

@@ -20,7 +20,7 @@ const Info: React.FC = () => {
             const formData = new FormData();
             if (file) {
                 formData.append('file', file);
-                const res = await axios.post('/upload', formData);
+                const res = await axios.post('/api/upload', formData);
                 return res.data;
             }
         } catch (err) {
@@ -39,7 +39,7 @@ const Info: React.FC = () => {
         }
 
         try {
-            await axios.put(`/users/${currentUser?.id}`, payload);
+            await axios.put(`/api/users/${currentUser?.id}`, payload);
             setCurrentUser(payload);
         } catch (err) {
             console.log(err);
@@ -52,12 +52,13 @@ const Info: React.FC = () => {
         } else {
             navigate('/');
         }
-    }, [currentUser])
+    }, [currentUser, navigate])
 
     useEffect(() => {
         if (!!file) {
             submit();
         }
+    // eslint-disable-next-line
     }, [file]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {

@@ -15,7 +15,7 @@ const Signup: React.FC = () => {
         e.preventDefault();
 
         try {
-            await axios.post('/auth/register', inputs);
+            await axios.post('/api/auth/register', inputs);
             navigate('/login');
         } catch (err: any) {
             setError(err.response.data);

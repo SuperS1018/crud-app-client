@@ -19,7 +19,7 @@ const CreatePost: React.FC = () => {
             const formData = new FormData();
             if (file) {
                 formData.append('file', file);
-                const res = await axios.post('/upload', formData);
+                const res = await axios.post('/api/upload', formData);
                 return res.data;
             }
         } catch (err) {
@@ -33,13 +33,13 @@ const CreatePost: React.FC = () => {
 
         try {
             state ? 
-            await axios.put(`/posts/${state.id}`, {
+            await axios.put(`/api/posts/${state.id}`, {
                 title,
                 desc: description,
                 img: file ? imgUrl : state.img,
                 cate
             }):
-            await axios.post('/posts', {
+            await axios.post('/api/posts', {
                 title,
                 desc: description,
                 img: file ? imgUrl : state.img,

@@ -16,12 +16,12 @@ const Posts: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const params = location.search;
-    const [ posts, setPosts ] = useState<PostsProps[] | []>([]);
+    const [posts, setPosts] = useState<PostsProps[] | []>([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`/posts${params}`);
+                const res = await axios.get(`/api/posts${params}`);
                 setPosts(res.data);
             } catch (err) {
                 console.log(err);
@@ -42,7 +42,7 @@ const Posts: React.FC = () => {
                             <Link className="link" to={`/post/${post.id}`}>
                                 <h1>{post.title}</h1>
                             </Link>
-                            <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.desc, { USE_PROFILES: { html: true }}) }} />
+                            <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.desc, { USE_PROFILES: { html: true } }) }} />
                             <button onClick={() => navigate(`/post/${post.id}`)}>Read more</button>
                         </div>
                     </div>
