@@ -71,7 +71,7 @@ const SinglePost: React.FC = () => {
                 </div>
 
                 <h1>{post.title}</h1>
-                <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.desc) }}></p>
+                <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.desc) }} />
             </div>
 
             <Menu category={post.cate} />
