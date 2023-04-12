@@ -30,21 +30,23 @@ const CreatePost: React.FC = () => {
     const handlePublish = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         const imgUrl = await uploadFile();
-
+        const status = 'publish';
         try {
             state ? 
             await axios.put(`/api/posts/${state.id}`, {
                 title,
                 desc: description,
                 img: file ? imgUrl : state?.img,
-                cate
+                cate,
+                status
             }):
             await axios.post('/api/posts', {
                 title,
                 desc: description,
                 img: file ? imgUrl : state?.img,
                 cate,
-                date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss')
+                date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
+                status
             })
             navigate('/');
         } catch (err) {
