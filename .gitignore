@@ -12,7 +12,7 @@
 /build
 
 # uploads
-/public/uploads/*.*
+/public/uploads
 
 # misc
 .DS_Store
