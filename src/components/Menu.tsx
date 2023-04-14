@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { PostsProps } from "../pages/Posts";
+import { SPACES_IMAGE_URL } from "../constants";
 
 const Menu: React.FC<{category: string | undefined}> = ({category}) => {
     const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Menu: React.FC<{category: string | undefined}> = ({category}) => {
             <h1>Other posts you may like</h1>
             {posts.map(post => (
                 <div className="post" key={post.id}>
-                    <img src={`/uploads/${post.img}`} alt={post.title} />
+                    <img src={`${SPACES_IMAGE_URL}/${post.img}`} alt={post.title} />
                     <h2>{post.title}</h2>
                     <button onClick={() => navigate(`/post/${post.id}`)}>Read more</button>
                 </div>
