@@ -1,6 +1,6 @@
 import axios from "axios";
 import moment from "moment";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useLocation, useNavigate } from "react-router";
@@ -11,8 +11,12 @@ const CreatePost: React.FC = () => {
     const { state } = useLocation();
     const [description, setDescription] = useState<string>(state?.desc || '');
     const [title, setTitle] = useState<string>(state?.title || '');
-    const [file, setFile] = useState<string | Blob>('');
+    const [file, setFile] = useState<File | null>(null);
     const [cate, setCate] = useState<string>(state?.cate || '');
+
+    useEffect(() => {
+        console.log('file: ', file);
+    }, [file]);
 
     const uploadFile = async () => {
         try {
@@ -65,15 +69,11 @@ const CreatePost: React.FC = () => {
 
             <div className="menu">
                 <div className="item">
-                    <h1>Publish</h1>
-                    <span>
-                        <b>Status:</b> Draft
-                    </span>
-                    <span>
-                        <b>Visibility:</b> Public
-                    </span>
+                    <h2>Status: {state.status}</h2>
 
-                    <input style={{display: 'none'}} type='file' id='file' name='file' accept="image/jpeg, image/png" onChange={e => setFile(e?.target?.files?.[0] || '')} />
+                    {file && file.name && <img className="preview" src={URL.createObjectURL(file)} alt="preview" />}
+
+                    <input style={{display: 'none'}} type='file' id='file' name='file' accept="image/jpeg, image/png" onChange={e => setFile(e?.target?.files?.[0] || null)} />
                     <label className='file' htmlFor="file">Upload Image</label>
 
                     <div className="buttons">
