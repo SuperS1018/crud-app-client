@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import DOMPurify from "isomorphic-dompurify";
+import { SPACES_IMAGE_URL } from "../constants";
 
 export interface PostsProps {
     id: number;
@@ -36,7 +37,7 @@ const Posts: React.FC = () => {
                 {posts.map(post => (
                     <div className="post" key={post.id}>
                         <div className="img">
-                            <img src={`/uploads/${post.img}`} alt={post.title} />
+                            <img src={`${SPACES_IMAGE_URL}/${post?.img}`} alt={post.title} />
                         </div>
                         <div className="content">
                             <Link className="link" to={`/post/${post.id}`}>

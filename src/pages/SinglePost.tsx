@@ -7,6 +7,7 @@ import { PostsProps } from "./Posts";
 import axios from "axios";
 import moment from 'moment';
 import { AuthContext, AuthContextProps } from "../context/authContext";
+import { SPACES_IMAGE_URL } from "../constants";
 import DOMPurify from "isomorphic-dompurify";
 import DefaultAvatar from '../images/default.jpg';
 
@@ -55,9 +56,9 @@ const SinglePost: React.FC = () => {
     return (
         <div className="singlePost">
             <div className="content">
-                <img src={`/uploads/${post.img}`} alt="" />
+                <img src={`${SPACES_IMAGE_URL}/${post.img}`} alt="" />
                 <div className="user">
-                    <img src={post.userImg ? `../uploads/${post.userImg}` : DefaultAvatar} alt="" />
+                    <img src={post.userImg ? `${SPACES_IMAGE_URL}/${post.userImg}` : DefaultAvatar} alt="" />
                     <div className="info">
                         <span>{post.username}</span>
                         <p>Posted {moment(post.date).fromNow()}</p>

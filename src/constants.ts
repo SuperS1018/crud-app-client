@@ -25,5 +25,4 @@ export const CATEGORIES_LIST = [
     }
 ]
 
-export const AVATAR_SPACES_URL = 'https://cdn-buckets.sfo3.cdn.digitaloceanspaces.com/avatar-images';
-export const BLOG_SPACES_URL = 'https://cdn-buckets.sfo3.cdn.digitaloceanspaces.com/blog-images';
+export const SPACES_IMAGE_URL = 'https://cdn-buckets.sfo3.cdn.digitaloceanspaces.com';
