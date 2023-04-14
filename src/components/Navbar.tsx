@@ -2,7 +2,7 @@ import React, { Context, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext, AuthContextProps } from "../context/authContext";
 import Logo from '../images/sam-logo.svg';
-import { CATEGORIES_LIST } from "../constants";
+import { CATEGORIES_LIST, AVATAR_SPACES_URL } from "../constants";
 
 const Navbar: React.FC = () => {
     const navigate = useNavigate();
@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
 
                     {currentUser && <Link to='/myInfo'>
                         <div className="avatar">
-                            <img src={`../uploads/${currentUser?.img}`} alt={currentUser?.username} />
+                            <img src={`${AVATAR_SPACES_URL}/${currentUser?.img}`} alt={currentUser?.username} />
                         </div>
                     </Link>}
                 </div>

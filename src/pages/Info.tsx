@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Context, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { AuthContext, AuthContextProps, CurrentUserProps } from '../context/authContext';
+import { AVATAR_SPACES_URL } from '../constants';
 import DefaultAvatar from '../images/default.jpg';
 
 const Info: React.FC = () => {
@@ -79,7 +80,7 @@ const Info: React.FC = () => {
                     <input style={{display: 'none'}} type='file' id='file' name='file' accept="image/jpeg, image/png" onChange={e => setFile(e?.target?.files?.[0] || '')} />
                     <label className='file' htmlFor="file">
                         <div className="upload-icon" />
-                        <img src={`./uploads/${currentUser?.img}` || DefaultAvatar} alt={currentUser?.username} />
+                        <img src={`${AVATAR_SPACES_URL}/${currentUser?.img}` || DefaultAvatar} alt={currentUser?.username} />
                     </label>
                 </div>
                 <div className="content">

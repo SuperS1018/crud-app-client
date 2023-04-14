@@ -24,3 +24,6 @@ export const CATEGORIES_LIST = [
         value: 'food'
     }
 ]
+
+export const AVATAR_SPACES_URL = 'https://cdn-buckets.sfo3.cdn.digitaloceanspaces.com/avatar-images';
+export const BLOG_SPACES_URL = 'https://cdn-buckets.sfo3.cdn.digitaloceanspaces.com/blog-images';
