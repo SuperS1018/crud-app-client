@@ -69,7 +69,7 @@ const CreatePost: React.FC = () => {
 
             <div className="menu">
                 <div className="item">
-                    <h2>Status: {state.status}</h2>
+                    <h2>Status: {state ? state.status : 'draft'}</h2>
 
                     {file && file.name && <img className="preview" src={URL.createObjectURL(file)} alt="preview" />}
 
