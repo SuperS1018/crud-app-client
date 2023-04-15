@@ -1,0 +1,43 @@
+.navbar {
+    .container {
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo { 
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 300px;
+                height: 90px;
+            }
+        }
+
+        
+
+        .links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .avatar {
+                img {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+
+            button {
+                @include primaryButton;
+
+                &.logout-btn {
+                    @include secondaryButton;
+                }
+            }
+        }
+    }
+}

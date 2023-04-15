@@ -1,0 +1,44 @@
+$bg-color: #fff5e0;
+$app-color: #f47c2c;
+
+@mixin primaryButton {
+    width: max-content;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background: $app-color;
+    border: 1px solid $app-color;
+    transition: all .3s ease-in-out;
+    
+    &:hover {
+        border-color: white;
+        background-color: $bg-color;
+        color: black;
+    }
+}
+
+@mixin secondaryButton {
+    width: max-content;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    color: $app-color;
+    background: white;
+    border: 1px solid $app-color;
+    transition: all .3s ease-in-out;
+    
+    &:hover {
+        border-color: white;
+        background-color: $bg-color;
+        color: black;
+    }
+}
+
+@mixin input {
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #000;
+    font-size: inherit;
+    background: transparent;
+}

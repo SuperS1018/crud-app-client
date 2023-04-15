@@ -1,0 +1,28 @@
+@import './styles/base.scss';
+@import './styles/info.scss';
+@import './styles/login.scss';
+@import './styles/navbar.scss';
+@import './styles/posts.scss';
+@import './styles/singlePost.scss';
+@import './styles/createPost.scss';
+
+.app {
+    display: flex;
+    justify-content: center;
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    .container {
+        width: 100%;
+        max-width: 1024px;
+
+        .link {
+            text-decoration: none;
+            color: inherit;
+        } 
+    }
+}

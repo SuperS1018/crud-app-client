@@ -1,0 +1,88 @@
+.createPost {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+
+    .content {
+        flex: 5;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        input {
+            padding: 10px;
+            border: 1px solid lightgray;
+        }
+
+        .editorContainer {
+            height: 300px;
+            overflow: scroll;
+            border: 1px solid lightgray;
+
+            .editor {
+                height: 100%;
+                border: none;
+            }
+        }
+    }
+
+    .menu {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .item {
+            padding: 10px;
+            border: 1px solid lightgray;
+            gap: 10px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-style: 12px;
+            color: #555;
+
+            h2 {
+                font-style: 20px;
+                margin: 0;
+            }
+
+            .file {
+                text-decoration: underline;
+                margin-bottom: 1rem;
+                cursor: pointer;
+            }
+
+            .preview {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+
+            .category {
+                color: teal;
+
+                input {
+                    gap: 10px;
+                }
+            }
+
+            .buttons {
+                display: flex;
+                justify-content: space-between;
+
+                button {
+                    &:first-of-type {
+                        @include secondaryButton;
+                    }
+
+                    &:last-of-type {
+                        @include primaryButton;
+                    }
+                }
+            }
+        }
+
+    }
+}
